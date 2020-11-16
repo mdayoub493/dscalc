@@ -12,5 +12,5 @@ setup(name='dscalc',
       test_suite = 'tests',
       # include_package_data: to install data from MANIFEST.in
       include_package_data=True,
-      scripts=['scripts/dscalc-run'],
+      scripts=['scripts/dscalc-run', 'scripts/calc-sum'],
       zip_safe=False)

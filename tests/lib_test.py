@@ -1,19 +1,38 @@
-# -*- coding: UTF-8 -*-
+#importando um arquivo especifico
+from dscalc.lib import sum, subtract
 
-# Import from standard library
-import os
-import dscalc
-import pandas as pd
-# Import from our lib
-from dscalc.lib import clean_data
-import pytest
+#importando uma funcao especifica no jupyter
+#no terminal, roda pip install . (so vai funcionar se eu estiver na mesma pasta que estiver setup.py)
+#from dscalc.lib import sum 
+
+#nos testes:
+# 1. a gente escolhe inputs dessa funcao (qq input que a gente sabe qual vai ser o output)
+# 2. deve saber qual eh o output
+# 3. deve ver se o que a gente consegue eh o esperado
+
+def test_sum():
+    a, b = 2, 2
+    esperado = 4
+    conseguiu = sum(a,b)
+    assert conseguiu == esperado
+
+    #ou
+    c, d = 5, 0
+    expected = 5
+    got = sum(c,d)
+    assert got == expected
 
 
-def test_clean_data():
-    datapath = os.path.dirname(os.path.abspath(dscalc.__file__)) + '/data'
-    df = pd.read_csv('{}/data.csv.gz'.format(datapath))
-    first_cols = ['id', 'civility', 'birthdate', 'city', 'postal_code', 'vote_1']
-    assert list(df.columns)[:6] == first_cols
-    assert df.shape == (999, 142)
-    out = clean_data(df)
-    assert out.shape == (985, 119)
+def test_subtract():
+    a, b = 2, 2
+    esperado = 0
+    conseguiu = subtract(a,b)
+    assert conseguiu == esperado
+
+    c, d = 5, 0
+    expected = 5
+    got = subtract(c,d)
+    assert got == expected
+
+
+#qdo projeto passa no test, posso rodar pip install .
